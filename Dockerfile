@@ -1,5 +1,8 @@
-FROM ruby:2.4
+FROM ruby:2.6-alpine
 
-MAINTAINER Aleksey Kolyadin <aleksey@kolyadin.ru>
+LABEL maintainer="aleksey@kolyadin.ru"
 
-RUN apt-get update && apt-get install -y rsync
+RUN apk update                          && \
+    apk upgrade                         && \
+    apk add --no-cache rsync            && \
+    rm -rf /tmp/* /var/cache/apk/*
